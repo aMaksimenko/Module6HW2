@@ -17,8 +17,50 @@ public class CatalogItemService : BaseDataService<ApplicationDbContext>, ICatalo
         _catalogItemRepository = catalogItemRepository;
     }
 
-    public Task<int> CreateProductAsync(string name, string description, decimal price, int availableStock, int catalogBrandId, int catalogTypeId, string pictureFileName)
+    public Task<int> Create(
+        string name,
+        string description,
+        decimal price,
+        int availableStock,
+        int catalogBrandId,
+        int catalogTypeId,
+        string pictureFileName)
     {
-        return ExecuteSafe(() => _catalogItemRepository.Add(name, description, price, availableStock, catalogBrandId, catalogTypeId, pictureFileName));
+        return ExecuteSafe(
+            () => _catalogItemRepository.Create(
+                name,
+                description,
+                price,
+                availableStock,
+                catalogBrandId,
+                catalogTypeId,
+                pictureFileName));
+    }
+
+    public Task<int> Update(
+        int id,
+        string name,
+        string description,
+        decimal price,
+        int availableStock,
+        int catalogBrandId,
+        int catalogTypeId,
+        string pictureFileName)
+    {
+        return ExecuteSafe(
+            () => _catalogItemRepository.Update(
+                id,
+                name,
+                description,
+                price,
+                availableStock,
+                catalogBrandId,
+                catalogTypeId,
+                pictureFileName));
+    }
+
+    public Task<int> Delete(int id)
+    {
+        return ExecuteSafe(() => _catalogItemRepository.Delete(id));
     }
 }

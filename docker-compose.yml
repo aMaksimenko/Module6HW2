@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 services:
   catalog.api:
@@ -12,12 +12,9 @@ services:
     depends_on:
       - postgres
     ports:
-      - 5000:5000
-  nginx:
-    image: nginx
-    container_name: lde.nginx
-    ports:
-      - 80:80
+      - 5001:5000
+        
+        
   pgadmin4:
     image: dpage/pgadmin4
     container_name: lde.pgadmin4
@@ -28,6 +25,8 @@ services:
       - postgres
     ports:
       - 8001:80 
+        
+        
   postgres:
     image: postgres
     container_name: lde.postgres
